@@ -5,44 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .symbol{
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 <body>
     <h1 >Calculator</h1>
 
     <table border="2">
         <tr >
-            <td align="right" colspan="4" width="50px" height="50px" id="result">0</td>
+            <td align="right" colspan="4" ><input id="result" height="50px" value=0 width="300px" type="text"/></td>
           
            
         </tr>
         <tr >
-            <td align="center" width="50px" height="50px" id='clear'>AC</td>
-            <td align="center" width="50px" id="sign">+/-</td>
-            <td align="center" width="50px" id="precent">%</td>
-            <td align="center" width="50px" id="div">/</td>
+            <td class="symbol" id='clear'>AC</td>
+            <td class="symbol" id="leftP">(</td>
+            <td class="symbol" id="rightP">)</td>
+            <td class="symbol" id="div">/</td>
         </tr>
         <tr >
-            <td align="center" width="50px" height="50px" id="num7">7</td>
-            <td align="center" width="50px" id="num8">8</td>
-            <td align="center" width="50px" id="num9">9</td>
-            <td align="center" width="50px" id="multification">*</td>
+            <td class="symbol" id="num7">7</td>
+            <td class="symbol" id="num8">8</td>
+            <td class="symbol" id="num9">9</td>
+            <td class="symbol" id="multification">*</td>
         </tr>
         <tr >
-            <td align="center" width="50px" height="50px" id="num4">4</td>
-            <td align="center" width="50px" id="num5">5</td>
-            <td align="center" width="50px" id="num6">6</td>
-            <td align="center" width="50px" id="subtraction">-</td>
+            <td class="symbol" id="num4">4</td>
+            <td class="symbol" id="num5">5</td>
+            <td class="symbol" id="num6">6</td>
+            <td class="symbol" id="subtraction">-</td>
         </tr>
         <tr >
-            <td align="center" width="50px" height="50px" id="num1">1</td>
-            <td align="center" width="50px" id="num2">2</td>
-            <td align="center" width="50px" id="num3">3</td>
-            <td align="center" width="50px"  id="plus">+</td>
+            <td class="symbol" id="num1">1</td>
+            <td class="symbol" id="num2">2</td>
+            <td class="symbol" id="num3">3</td>
+            <td class="symbol"  id="plus">+</td>
         </tr>
         <tr >
-            <td align="center" colspan="2" width="50px" height="50px"  id="num0">0</td>
-            <td align="center" width="50px"  id="decimal">.</td>
-            <td align="center" width="50px"  id="equal">=</td>
+            <td class="symbol" colspan="2" id="num0">0</td>
+            <td class="symbol"  id="decimal">.</td>
+            <td   id="equal">=</td>
            
         </tr>
     </table>
@@ -50,51 +58,80 @@
         function numPrint(e){
             let result =document.getElementById("result");
             obj=e.target;
-            result.textContent =result.textContent +obj.textContent;
+            if (result.value=="0"){
+                result.value =obj.textContent;
+            }
+            else{
+                result.value =result.value +obj.textContent;
+            }
         }
-        let num0 =document.getElementById("num0");
-        let num1 =document.getElementById("num1");
-        let num2 =document.getElementById("num2");
-        let num3 =document.getElementById("num3");
-        let num4 =document.getElementById("num4");
-        let num5 =document.getElementById("num5");
-        let num6 =document.getElementById("num6");
-        let num7 =document.getElementById("num7");
-        let num8 =document.getElementById("num8");
-        let num9 =document.getElementById("num9");
-        let subtraction =document.getElementById("subtraction");
-        let div =document.getElementById("div");
-        let multification =document.getElementById("multification");
-        let decimal =document.getElementById("decimal");
-        let plus =document.getElementById('plus');
-        let clear =document.getElementById("clear");
+
+        function digitPrint(e){
+            let result =document.getElementById("result");
+            obj=e.target;
+          
+                result.value =result.value +obj.textContent;
+            
+        }
+
+        // let num0 =document.getElementById("num0");
+        // let num1 =document.getElementById("num1");
+        // let num2 =document.getElementById("num2");
+        // let num3 =document.getElementById("num3");
+        // let num4 =document.getElementById("num4");
+        // let num5 =document.getElementById("num5");
+        // let num6 =document.getElementById("num6");
+        // let num7 =document.getElementById("num7");
+        // let num8 =document.getElementById("num8");
+        // let num9 =document.getElementById("num9");
+        // let subtraction =document.getElementById("subtraction");
+        // let div =document.getElementById("div");
+        // let multification =document.getElementById("multification");
+        // let decimal =document.getElementById("decimal");
+        // let plus =document.getElementById('plus');
+      
+        
+        // let leftP =document.getElementById("leftP");
+        // let rightP =document.getElementById('rightP');
+
         let equal =document.getElementById('equal');
-
-
+        let clear =document.getElementById("clear");
         // let result =document.getElementById("result");
-        num0.addEventListener("click",numPrint);
-        num1.addEventListener("click",numPrint);
-        num2.addEventListener("click",numPrint);
-        num3.addEventListener("click",numPrint);
-        num4.addEventListener("click",numPrint);
-        num5.addEventListener("click",numPrint);
-        num6.addEventListener("click",numPrint);
-        num7.addEventListener("click",numPrint);
-        num8.addEventListener("click",numPrint);
-        num9.addEventListener("click",numPrint);
-        plus.addEventListener('click',numPrint);
-        subtraction.addEventListener("click",numPrint);
-        div.addEventListener("click",numPrint);
-        multification.addEventListener("click",numPrint);
-        decimal.addEventListener("click",numPrint);
-        clear.addEventListener("click",numPrint);
 
+        let symbols=document.getElementsByClassName("symbol");
+        
+        // [num0,num1,num2,num3,num4,num5,
+        // num6,num7,num8,num9,plus,subtraction,multification,decimal,clear,leftP,rightP]
+
+        for(let i=0;i<symbols.length;i++){
+            symbols[i].addEventListener("click",numPrint);
+        }
+
+
+        // num0.addEventListener("click",numPrint);
+        // num1.addEventListener("click",numPrint);
+        // num2.addEventListener("click",numPrint);
+        // num3.addEventListener("click",numPrint);
+        // num4.addEventListener("click",numPrint);
+        // num5.addEventListener("click",numPrint);
+        // num6.addEventListener("click",numPrint);
+        // num7.addEventListener("click",numPrint);
+        // num8.addEventListener("click",numPrint);
+        // num9.addEventListener("click",numPrint);
+        // plus.addEventListener('click',digitPrint);
+        // subtraction.addEventListener("click",digitPrint);
+        // div.addEventListener("click",digitPrint);
+        // multification.addEventListener("click",digitPrint);
+        // decimal.addEventListener("click",digitPrint);
+        // clear.addEventListener("click",numPrint);
+        // leftP.addEventListener("click",numPrint);
+        // rightP.addEventListener('click',digitPrint);
 
         clear.addEventListener('click',
-        e=>document.getElementById('result').textContent=0);
+        e=>document.getElementById('result').value=0);
 
         equal.addEventListener('click',
-        ()=> document.getElementById('result').textContent=eval(result.textContent))
+        ()=> document.getElementById('result').value=eval(result.value));
     </script>
 </body>
 </html>
